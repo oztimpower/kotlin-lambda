@@ -2,7 +2,7 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "QuarkusSam-KotlinLambda"
+stack_name = "QuarkusSam-KotlinLambdaJVM"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1at2vt1ik6cnc"
 s3_prefix = "QuarkusSam"
 region = "ap-southeast-1"

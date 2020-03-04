@@ -1,13 +1,13 @@
   AWSTemplateFormatVersion: '2010-09-09'
   Transform: AWS::Serverless-2016-10-31
-  Description: AWS Serverless Quarkus HTTP - org.tjpower::lambda-sqs
+  Description: AWS Serverless Quarkus HTTP - org.tjpower
   Globals:
     Api:
       BinaryMediaTypes:
         - "*/*"
 
   Resources:
-    LambdaSqsNativeFunction:
+    KotlinLambdaNativeFunction:
       Type: AWS::Serverless::Function
       Properties:
         Handler: not.used.in.provided.runtimei

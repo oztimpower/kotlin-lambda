@@ -28,16 +28,16 @@ function cmd_update() {
     --zip-file ${ZIP_FILE}
 }
 
-FUNCTION_NAME=LambdaSqsFunction
+FUNCTION_NAME=KotlinLambdaFunction
 HANDLER=io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
-RUNTIME=java8
-ZIP_FILE=fileb://target/lambda-sqs-1.0-SNAPSHOT-runner.jar
+RUNTIME=java11
+ZIP_FILE=fileb://target/kotlin-lambda-1.0-SNAPSHOT-runner.jar
 
 if [ "$1" == "native" ]
 then
   RUNTIME=provided
   ZIP_FILE=fileb://target/function.zip
-  FUNCTION_NAME=LambdaSqsNativeFunction
+  FUNCTION_NAME=KotlinLambdaNativeFunction
   LAMBDA_META="--environment Variables={DISABLE_SIGNAL_HANDLERS=true}"
   shift
 fi
