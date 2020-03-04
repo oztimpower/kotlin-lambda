@@ -12,8 +12,8 @@
       Type: AWS::Serverless::Function
       Properties:
         Handler: io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
-        Runtime: java8
-        CodeUri: target/lambda-sqs-1.0-SNAPSHOT-runner.jar
-        MemorySize: 128
+        Runtime: java11
+        CodeUri: target/kotlin-lambda-1.0-SNAPSHOT-runner.jar
+        MemorySize: 256
         Timeout: 15
         Policies: AWSLambdaBasicExecutionRole
