@@ -1,11 +1,16 @@
 package org.tjpower
 
 import io.quarkus.amazon.lambda.test.LambdaClient
+import io.quarkus.test.junit.NativeImageTest
 import io.quarkus.test.junit.QuarkusTest
 import org.jboss.logging.Logger
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
+
+@NativeImageTest
+class LambdaSimpleTestCaseIT: LambdaSimpleTestCase() {
+}
 
 @QuarkusTest
 class LambdaSimpleTestCase {
