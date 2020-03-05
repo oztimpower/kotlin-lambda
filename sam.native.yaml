@@ -19,3 +19,4 @@
         Environment:
           Variables:
             DISABLE_SIGNAL_HANDLERS: true
+        Tracing: Active

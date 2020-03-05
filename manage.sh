@@ -45,7 +45,7 @@ function usage() {
 FUNCTION_NAME=KotlinLambdaFunction
 HANDLER=io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
 RUNTIME=java11
-ZIP_FILE=fileb://target/kotlin-lambda-1.0-SNAPSHOT-runner.jar
+ZIP_FILE=fileb://target/kotlin-lambda-1.0.0-SNAPSHOT-runner.jar
 
 if [ "_$1" == "_" ] || [ "$1" == "help" ]
  then

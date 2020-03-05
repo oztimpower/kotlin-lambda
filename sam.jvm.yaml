@@ -17,3 +17,4 @@
         MemorySize: 256
         Timeout: 15
         Policies: AWSLambdaBasicExecutionRole
+        Tracing: Active
