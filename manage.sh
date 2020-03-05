@@ -1,3 +1,5 @@
+#!/bin/sh
+
 function cmd_create() {
   echo Creating function
   aws lambda create-function \
@@ -20,7 +22,8 @@ function cmd_invoke() {
     --function-name ${FUNCTION_NAME} \
     --payload file://payload.json \
     --log-type Tail \
-    --query 'LogResult' --output text |  base64 -d
+    --query 'LogResult' \
+    --output text |  base64 -d
 }
 
 function cmd_update() {
@@ -30,10 +33,24 @@ function cmd_update() {
     --zip-file ${ZIP_FILE}
 }
 
+function usage() {
+  [ "_$1" == "_" ] && echo "\nUsage (JVM): \n$0 [create|delete|invoke]\ne.g.: $0 invoke"
+  [ "_$1" == "_" ] && echo "\nUsage (Native): \n$0 native [create|delete|invoke]\ne.g.: $0 native invoke"
+
+  [ "_" == "_`which aws 2>/dev/null`" ] && echo "\naws CLI not installed. Please see https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html"
+  [ ! -e $HOME/.aws/credentials ] && [ "_$AWS_ACCESS_KEY_ID" == "_" ] && echo "\naws configure not setup.  Please execute: aws configure"
+  [ "_$LAMBDA_ROLE_ARN" == "_" ] && echo "\nEnvironment variable must be set: LAMBDA_ROLE_ARN\ne.g.: export LAMBDA_ROLE_ARN=arn:aws:iam::123456789012:role/my-example-role"
+}
+
 FUNCTION_NAME=KotlinLambdaFunction
 HANDLER=io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
 RUNTIME=java11
 ZIP_FILE=fileb://target/kotlin-lambda-1.0-SNAPSHOT-runner.jar
+
+if [ "_$1" == "_" ] || [ "$1" == "help" ]
+ then
+  usage
+fi
 
 if [ "$1" == "native" ]
 then
@@ -49,4 +66,6 @@ do
   eval cmd_${1}
   shift
 done
+
+
 
